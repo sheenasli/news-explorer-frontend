@@ -2,10 +2,10 @@ import "./SearchForm.css";
 
 const SearchForm = () => {
   return (
-    <div>
+    <div className="searchform">
       <section className="searchform__header">
         <div className="searchform__text-heading">
-          What's going on in the world?
+          What's going on in<br></br>the world?
         </div>
         <div className="searchform__text-subheading">
           Find the latest news on any topic and save them in your personal
@@ -13,8 +13,11 @@ const SearchForm = () => {
         </div>
       </section>
 
-      <section>
-        <input className="searchform__searchbar-input" />
+      <section className="searchform__searchbar">
+        <input
+          className="searchform__searchbar-input"
+          placeholder="Enter topic"
+        />
         <button className="searchform__searchbar-button" type="submit">
           Search
         </button>

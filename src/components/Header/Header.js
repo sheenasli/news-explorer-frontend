@@ -1,23 +1,32 @@
+import { Link } from "react-router-dom";
 import headerLogoWhite from "../../images/NewsExplorerWhite.svg";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ handleRegisterModal, handleLoginModal }) => {
   console.log("Header");
 
   return (
     <header className="header">
       <div>
-        <div>
+        <Link to="/">
           <img src={headerLogoWhite} alt="White Logo" />
-        </div>
+        </Link>
       </div>
+
       <div className="header__button-container">
-        <div>
-          <button type="text">Home</button>
-        </div>
-        <div>
-          <button type="text">Sign In</button>
-        </div>
+        <Link to="/">
+          <button className="header__button_home" type="text">
+            Home
+          </button>
+        </Link>
+
+        <button
+          className="header__button_signin"
+          type="text"
+          onClick={handleLoginModal}
+        >
+          Sign In
+        </button>
       </div>
     </header>
   );

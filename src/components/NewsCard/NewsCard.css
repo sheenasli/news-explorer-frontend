@@ -1,0 +1,61 @@
+.card_container {
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 400px;
+  height: 576px;
+  position: relative;
+}
+
+.card_image {
+  width: 400px;
+  height: 272px;
+}
+
+.card__text {
+  text-align: left;
+  margin: 0 24px;
+}
+
+.card__text_date-published {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #b6bcbf;
+  margin-top: 17px;
+}
+
+.card__text_name {
+  font-family: "Roboto-Slab", Arial, sans-serif;
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  color: black;
+  margin-top: 15px;
+  height: 60px;
+}
+
+.card__text_content {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: black;
+  margin-top: 16px;
+  height: 6.9em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.card__text_source {
+  font-family: "Roboto-Slab", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #b6bcbf;
+  position: absolute;
+  bottom: 20px;
+}

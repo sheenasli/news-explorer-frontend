@@ -1,13 +1,13 @@
-import SearchForm from "../SearchForm/SearchForm";
 import "./Main.css";
+import SearchForm from "../SearchForm/SearchForm";
 
 const Main = () => {
   console.log("Main");
 
   return (
-    <Main className="main">
+    <main className="main">
       <SearchForm />
-    </Main>
+    </main>
   );
 };
 

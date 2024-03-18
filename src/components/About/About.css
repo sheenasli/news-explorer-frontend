@@ -1,0 +1,41 @@
+.about {
+  min-height: 624px;
+  padding: 0 104px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+}
+
+.about__container {
+  display: flex;
+  align-items: center;
+}
+
+.about__avatar-image {
+  width: 464px;
+  height: 464px;
+  border-radius: 50%;
+}
+
+.about__text {
+  margin-left: 56px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.about__text_author {
+  font-family: "Roboto-slab", Arial, sans-serif;
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+}
+
+.about__text_bio {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
