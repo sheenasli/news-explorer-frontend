@@ -1,7 +1,7 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-import { defaultNewsCards } from "../NewsCard/NewsCard";
+import { defaultNewsCards } from "../../components/NewsCard/NewsCard";
 
 const NewsCardList = () => {
   return (

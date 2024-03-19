@@ -3,8 +3,6 @@ import headerLogoWhite from "../../images/NewsExplorerWhite.svg";
 import "./Header.css";
 
 const Header = ({ handleRegisterModal, handleLoginModal }) => {
-  console.log("Header");
-
   return (
     <header className="header">
       <div>

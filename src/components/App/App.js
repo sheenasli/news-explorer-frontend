@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -15,6 +15,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
 import SuccessModal from "../SuccessModal/SuccessModal";
+import { getNews, parseNewsData } from "../../utils/newsApi";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -34,6 +35,13 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    getNews().then((data) => {
+      console.log(data);
+      parseNewsData(data);
+    });
+  }, []);
 
   return (
     <div className="page">
