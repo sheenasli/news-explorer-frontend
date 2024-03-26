@@ -1,10 +1,7 @@
-.header-main {
-  background-image: url("../../images/background\ image.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
 .page {
   min-height: 1280px;
+  background-image: url("../../images/background\ image.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  /* max-height: 576px; */
 }

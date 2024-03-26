@@ -75,6 +75,10 @@
   color: #e6e8eb;
 }
 
+.modal__input:focus {
+  border-bottom: 1px solid #000;
+}
+
 .modal__button {
   margin: 43px 0 16px;
   padding: 0px;
@@ -92,7 +96,7 @@
   font-weight: 500;
 }
 
-.modal__button:disabled {
+.modal__button_disabled {
   color: #b6bcbf;
   background-color: #e6e8eb;
 }
@@ -113,4 +117,8 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.modal__error {
+  color: #ff0000;
 }

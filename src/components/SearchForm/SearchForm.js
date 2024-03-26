@@ -1,8 +1,19 @@
+import { useForm } from "react-hook-form";
 import "./SearchForm.css";
 
-const SearchForm = () => {
+const SearchForm = ({ handleSearch }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleSearchSubmit = ({ keyword }) => {
+    handleSearch({ keyword });
+  };
+
   return (
-    <div className="searchform">
+    <form className="searchform" onSubmit={handleSubmit(handleSearchSubmit)}>
       <section className="searchform__header">
         <div className="searchform__text-heading">
           What's going on in<br></br>the world?
@@ -16,13 +27,20 @@ const SearchForm = () => {
       <section className="searchform__searchbar">
         <input
           className="searchform__searchbar-input"
+          type="text"
+          id="searchform-item"
+          name="keyword"
           placeholder="Enter topic"
+          {...register("keyword", { required: "Please enter a keyword" })}
         />
+        {errors?.keyword && (
+          <p className="searchform__invalid">{errors.keyword.message}</p>
+        )}
         <button className="searchform__searchbar-button" type="submit">
           Search
         </button>
       </section>
-    </div>
+    </form>
   );
 };
 

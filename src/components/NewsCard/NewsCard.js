@@ -1,61 +1,120 @@
 import "./NewsCard.css";
+import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentPageContext } from "../../contexts/CurrentPageContext";
+import { KeywordContext } from "../../contexts/KeywordContext";
+import { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
-//move to api.js file//
-// const source = (data) => {
-//   data.source.name;
-//   return source;
-// };
+const NewsCard = ({
+  onSignUp,
+  newsData,
+  handleSaveArticle,
+  handleRemoveArticle,
+}) => {
+  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { keyword } = useContext(KeywordContext);
+  const { savedArticles } = useContext(SavedArticlesContext);
+  const location = useLocation();
+  const [isHovered, setIsHovered] = useState(false);
 
-export const defaultNewsCards = [
-  {
-    _id: 1,
-    title: "news 1",
-    publishedAt: "November 4, 2020",
-    description: "Lorem ipsum dolor sit amet",
-    source: "Nat Geo",
-    urlToImage:
-      "https://images.unsplash.com/photo-1708804309492-5ef3f3458c33?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    _id: 2,
-    title: "news 2",
-    publishedAt: "November 4, 2020",
-    description: "Lorem ipsum dolor sit amet",
-    source: "Nat Geo",
-    urlToImage:
-      "https://plus.unsplash.com/premium_photo-1676496046182-356a6a0ed002?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    _id: 3,
-    title: "news 3",
-    publishedAt: "November 4, 2020",
-    description:
-      "vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet test lkjsgkd lsdkjlsdk",
-    source: "Nat Geo",
-    urlToImage:
-      "https://images.unsplash.com/photo-1682687220015-186f63b8850a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw0Nnx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    _id: 4,
-    title: "News 3- Hi this is the title of this news card",
-    publishedAt: "November 4, 2020",
-    description:
-      "vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet vLorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet test lkjsgkd lsdkjlsdk",
-    source: "Nat Geo",
-    urlToImage:
-      "https://images.unsplash.com/photo-1682687220015-186f63b8850a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw0Nnx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname, setCurrentPage]);
 
-const NewsCard = ({ card }) => {
+  const formattedDate = new Date(
+    newsData.publishedAt || newsData.date
+  ).toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  const handleBookmarkClick = () => {
+    const token = localStorage.getItem("jwt");
+    handleSaveArticle({ newsData, keyword, token });
+  };
+
+  const handleRemoveClick = () => {
+    const token = localStorage.getItem("jwt");
+    handleRemoveArticle({ newsData, token });
+  };
+
   return (
     <div className="card_container">
-      <img src={card.urlToImage} className="card_image" />
+      {currentPage === "/saved-news" && (
+        <>
+          <div className="card__keyword">{newsData.keyword}</div>
+          <div
+            className={`card__popup-text ${
+              isHovered ? "" : "card__popup-text_hidden"
+            }`}
+          >
+            Remove from saved
+          </div>
+          <button
+            className="card__button-delete"
+            onClick={handleRemoveClick}
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          />
+        </>
+      )}
+      {isLoggedIn && currentPage === "/" ? (
+        <button
+          className={`card__button-bookmark ${
+            savedArticles.some(
+              (savedArticle) => savedArticle.link === newsData.url
+            )
+              ? "card__button-bookmark_marked"
+              : ""
+          }`}
+          onClick={handleBookmarkClick}
+        />
+      ) : (
+        ""
+      )}
+      {!isLoggedIn && (
+        <>
+          <div
+            className={`card__popup-text ${
+              isHovered ? "" : "card__popup-text_hidden"
+            }`}
+          >
+            Sign in to save articles
+          </div>
+          <button
+            className="card__button-bookmark"
+            onClick={onSignUp}
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          />
+        </>
+      )}
+
+      <img
+        src={newsData.image || newsData.urlToImage}
+        alt={newsData.link || newsData.url}
+        className="card_image"
+      />
       <div className="card__text">
-        <div className="card__text_date-published">{card.publishedAt} </div>
-        <div className="card__text_name">{card.title} </div>
-        <div className="card__text_content">{card.description}</div>
-        <div className="card__text_source">{card.source} </div>
+        <p className="card__text_date-published">{formattedDate} </p>
+        <h3 className="card__text_title">{newsData.title} </h3>
+        <p className="card__text_content">
+          {newsData.text || newsData.description}
+        </p>
+        <p className="card__text_source">
+          {newsData.source.name || newsData.source}
+        </p>
       </div>
     </div>
   );

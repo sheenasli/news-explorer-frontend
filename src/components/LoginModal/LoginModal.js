@@ -1,29 +1,36 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useForm } from "../hooks/useForm";
+import { useForm, useFormWithValidation } from "../hooks/useForm";
 
 const LoginModal = ({
   handleCloseModal,
   handleRegisterModal,
+  handleAltClick,
   onSubmit,
+  handleLogin,
   isLoading,
   onClose,
+  serverError,
 }) => {
-  const { values, handleChange, setValues } = useForm({});
+  const { values, errors, isValid, handleChange } = useFormWithValidation({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(values);
+    handleLogin(values);
   };
 
   return (
     <ModalWithForm
       title="Sign in"
-      buttonText="Sign in"
+      buttonText={isLoading ? "Loading..." : "Sign in"}
       altButtonText="Sign up"
       onClose={onClose}
       onSubmit={handleSubmit}
-      altButtonOnClick={handleRegisterModal}
+      handleAltClick={handleAltClick}
+      isDisabled={!isValid}
     >
       <div className="modal__input_container">
         <label>
@@ -32,13 +39,16 @@ const LoginModal = ({
             className="modal__input"
             type="email"
             name="email"
-            minLength="1"
-            maxLength="30"
+            minLength="4"
+            maxLength="50"
             placeholder="Enter email"
             value={values.email || ""}
-            // required
+            required
             onChange={handleChange}
           />
+          <span className="modal__error">
+            {errors.email} {""}
+          </span>
         </label>
         <label>
           Password
@@ -50,10 +60,16 @@ const LoginModal = ({
             maxLength="30"
             placeholder="Enter password"
             value={values.password || ""}
-            // required
+            required
             onChange={handleChange}
           />
+          <span className="modal__error">{errors.password}</span>
         </label>
+        {serverError && (
+          <span className="modal__error-unavailable">
+            Incorrect email or password
+          </span>
+        )}
       </div>
     </ModalWithForm>
   );

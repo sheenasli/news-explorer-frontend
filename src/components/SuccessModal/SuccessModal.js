@@ -3,25 +3,13 @@ import { useRef } from "react";
 import "./SuccessModal.css";
 import "../ModalWithForm/ModalWithForm.css";
 
-const SuccessModal = ({ onClose, onSubmit, handleLoginModal }) => {
+const SuccessModal = ({
+  onClose,
+  onSubmit,
+  handleLoginModal,
+  handleOverlay,
+}) => {
   const ref = useRef();
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
-  const handleOverlay = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
     <div className="modal" onClick={handleOverlay}>
       <div className="modal__container">

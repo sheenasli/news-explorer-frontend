@@ -1,8 +1,49 @@
-.card_section {
+.newscards__section {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f7;
+  padding: 80px 104px;
+}
+
+.newscards__title {
+  margin: 0;
+  font-family: "Roboto-Slab", Arial, sans-serif;
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+  color: black;
+}
+
+.newscards__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 64px 0;
 }
 
 .card_list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+}
+
+.newscards__button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  height: 64px;
+  width: 288px;
+  border-radius: 64px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.newscards__button:hover {
+  background-color: #e8e8e8;
+}
+
+.newscards__button_hidden {
+  display: none;
 }

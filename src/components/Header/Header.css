@@ -25,7 +25,20 @@
   border: none;
   background-color: transparent;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header__button_active {
   border-bottom: 3px solid #fff;
+}
+
+.header__button_saved-articles {
+  border: none;
+  background-color: transparent;
+  color: white;
   cursor: pointer;
 }
 
@@ -37,4 +50,13 @@
   border-radius: 48px;
   color: white;
   cursor: pointer;
+}
+
+.header__button_loggedin {
+}
+
+.header__username {
+}
+
+.header__logout {
 }

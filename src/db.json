@@ -1,5 +1,5 @@
 {
-  "defaultNewsCards": [
+  "news": [
     {
       "_id": 1,
       "title": "news 1",
