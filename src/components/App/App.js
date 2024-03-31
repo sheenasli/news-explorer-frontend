@@ -159,6 +159,9 @@ function App() {
   };
 
   const handleLoginModal = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    }
     setActiveModal("loginModal");
   };
 
@@ -284,7 +287,7 @@ function App() {
                     value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
                   >
                     <Header
-                      handleLoginModal={handleLoginModal}
+                      // handleLoginModal={handleLoginModal}
                       handleRegisterModal={handleRegisterModal}
                       handleSuccessModal={handleSuccessModal}
                       onLogin={handleLoginModal}

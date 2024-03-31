@@ -10,7 +10,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { MobileContext } from "../../contexts/MobileContext";
 import { useContext } from "react";
 
-const Header = ({ handleLoginModal, onLogin, onLogout }) => {
+const Header = ({ onLogin, onLogout }) => {
   const { currentPage, activeModal } = useContext(CurrentPageContext);
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
   const { mobileMenuOpen, openMobileMenu, closeMobileMenu } =
@@ -30,17 +30,21 @@ const Header = ({ handleLoginModal, onLogin, onLogout }) => {
     >
       <div>
         <NavLink to="/">
-          <img src={headerLogoWhite} alt="White Logo" />
+          <img
+            src={headerLogoWhite}
+            className="header__logo"
+            alt="White Logo"
+          />
         </NavLink>
       </div>
+      <button
+        className={`header__menu-button ${
+          mobileMenuOpen === true ? "header__menu-button_open" : ""
+        }`}
+        onClick={handleMobileMenu}
+      />
+      {mobileMenuOpen && <MobileMenu onLogin={onLogin} onLogout={onLogout} />}
       <nav className="header__button-container">
-        <button
-          className={`header__menu-button ${
-            mobileMenuOpen === true ? "header__menu-button_open" : ""
-          }`}
-          onClick={handleMobileMenu}
-        />
-        {mobileMenuOpen && <MobileMenu onLogin={onLogin} onLogout={onLogout} />}
         <NavLink
           to="/"
           className="header__button_home"
@@ -64,12 +68,21 @@ const Header = ({ handleLoginModal, onLogin, onLogout }) => {
       </nav>
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
-    <div className="header__savednews">
+    <div
+      className={`header__savednews ${
+        mobileMenuOpen ? "header__savednews-open" : ""
+      }`}
+    >
       <div>
         <NavLink to="/">
           <img src={headerLogoBlack} alt="Black Logo" />
         </NavLink>
       </div>
+      <button
+        className="header__savednews-menu-button"
+        onClick={handleMobileMenu}
+      />
+      {mobileMenuOpen && <MobileMenu onLogin={onLogin} onLogout={onLogout} />}
       <nav className="header__button-container">
         <NavLink
           exact
@@ -98,12 +111,23 @@ const Header = ({ handleLoginModal, onLogin, onLogout }) => {
       </nav>
     </div>
   ) : (
-    <div className="header">
+    <div
+      className={`header ${mobileMenuOpen === true ? "header__menu-open" : ""}`}
+    >
       <div>
         <NavLink to="/">
           <img src={headerLogoWhite} alt="White Logo" />
         </NavLink>
       </div>
+
+      <button
+        className={`header__menu-button ${
+          activeModal !== "" ? "header__menu-button_hidden" : ""
+        } ${mobileMenuOpen === true ? "header__menu-button_open" : ""}`}
+        onClick={handleMobileMenu}
+      />
+      {mobileMenuOpen && <MobileMenu onLogin={onLogin} onLogout={onLogout} />}
+
       <nav className="header__button-container">
         <NavLink
           to="/"
@@ -113,11 +137,7 @@ const Header = ({ handleLoginModal, onLogin, onLogout }) => {
         >
           Home
         </NavLink>
-        <button
-          className="header__button_signin"
-          type="text"
-          onClick={handleLoginModal}
-        >
+        <button className="header__button_signin" type="text" onClick={onLogin}>
           Sign In
         </button>
       </nav>
