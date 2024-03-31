@@ -5,7 +5,6 @@ import { SearchResultContext } from "../../contexts/SearchResultContext";
 import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 
 import { getSearchResults } from "../../utils/newsApi";
-// import { defaultNewsCards } from "../../components/NewsCard/NewsCard";
 
 const NewsCardList = ({ handleSaveArticle, handleRemoveArticle, onSignUp }) => {
   const [cardsDisplayed, setCardsDisplayed] = useState(3);

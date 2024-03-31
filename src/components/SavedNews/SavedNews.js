@@ -1,12 +1,12 @@
 import "./SavedNews.css";
-import NewsCardList from "../NewsCardList/NewsCardList";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
+import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 
-const SavedNews = () => {
+const SavedNews = ({ handleRemoveArticle }) => {
   return (
     <section className="saved-news__section">
       <SavedNewsHeader />
-      <NewsCardList />
+      <SavedNewsCardList handleRemoveArticle={handleRemoveArticle} />
     </section>
   );
 };

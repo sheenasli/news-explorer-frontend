@@ -1,0 +1,15 @@
+.savednews-newscards {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f7;
+  padding: 80px 104px;
+}
+
+.savednews-newscards__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 64px 0;
+}

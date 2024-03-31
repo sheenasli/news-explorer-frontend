@@ -8,6 +8,18 @@
 }
 
 .card__keyword {
+  background-color: white;
+  padding: 8px 22px;
+  text-align: center;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: black;
+  border-radius: 10px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
 }
 
 .card__popup-text {
@@ -30,6 +42,20 @@
 }
 
 .card__button-delete {
+  background: url(../../images/card-delete.svg);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.card__button-delete:hover {
+  background: url(../../images/card-delete-hover.svg);
+  cursor: pointer;
 }
 
 .card__button-bookmark {
@@ -108,4 +134,55 @@
   color: #b6bcbf;
   position: absolute;
   bottom: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .card_container {
+    border-radius: 14px;
+    width: 224px;
+    height: 420px;
+  }
+
+  .card__button-bookmark {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card_image {
+    width: 224px;
+    height: 150px;
+  }
+
+  .card__text {
+    text-align: left;
+    margin: 0 16px;
+  }
+
+  .card__text_date-published {
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+
+  .card__text_title {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 12px 0 0;
+    height: 72px;
+    -webkit-line-clamp: 3;
+  }
+
+  .card__text_content {
+    margin: 10px 0 12px;
+    height: 5.5em;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+  }
+
+  .card__text_source {
+    bottom: -4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
 }

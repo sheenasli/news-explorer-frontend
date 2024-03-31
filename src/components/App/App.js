@@ -29,6 +29,7 @@ import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
 import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 import { SearchResultContext } from "../../contexts/SearchResultContext";
+import { MobileContext } from "../../contexts/MobileContext";
 
 //Protected Route
 
@@ -46,6 +47,7 @@ function App() {
   const [searchError, setSearchError] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -119,24 +121,29 @@ function App() {
   //Callback function to login user
   const handleLogin = (email, password) => {
     setIsLoading(true);
-    authorization
-      .authorization(email, password)
-      .then((res) => {
-        if (res) {
-          localStorage.setItem("jwt", res.token);
-          authorization.checkToken(res.token).then((data) => {
-            setCurrentUser(data);
-            setIsLoggedIn(true);
-          });
-        }
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error("Login failed", err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // authorization
+    //   .authorization(email, password)
+    //   .then((res) => {
+    //     if (res) {
+    //       localStorage.setItem("jwt", res.token);
+    //       authorization.checkToken(res.token).then((data) => {
+    //         setCurrentUser(data);
+    //         setIsLoggedIn(true);
+    //       });
+    //     }
+    //     handleCloseModal();
+    //   })
+    //   .catch((err) => {
+    //     console.error("Login failed", err);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
+
+    const data = { name: "fake user" };
+    setCurrentUser(data);
+    setIsLoggedIn(true);
+    setIsLoading(false);
   };
 
   //Callback function to register new user
@@ -156,6 +163,9 @@ function App() {
   };
 
   const handleRegisterModal = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    }
     setActiveModal("registerModal");
   };
 
@@ -197,10 +207,21 @@ function App() {
   //callback for logging a user out
   const history = useHistory("");
   const handleLogout = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    }
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser({});
     history.push("/");
+  };
+
+  const openMobileMenu = () => {
+    setMobileMenuOpen(true);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
 
   //callback for saving article
@@ -259,60 +280,64 @@ function App() {
                 value={{ savedArticles, setSavedArticles }}
               >
                 <KeywordContext.Provider value={{ keyword, setKeyword }}>
-                  {/* <div className="header-main"> */}
-                  <Header
-                    handleLoginModal={handleLoginModal}
-                    handleRegisterModal={handleRegisterModal}
-                    handleSuccessModal={handleSuccessModal}
-                    onLogout={handleLogout}
-                  />
-
-                  <Switch>
-                    <Route exact path="/">
-                      <Main
-                        onSignUp={handleRegisterModal}
-                        handleSaveArticle={handleSaveArticle}
-                        handleRemoveArticle={handleRemoveArticle}
-                        searchError={searchError}
-                        handleSearch={handleSearch}
-                      />
-                    </Route>
-
-                    <ProtectedRoute path="/saved-news">
-                      <SavedNews />
-                    </ProtectedRoute>
-                  </Switch>
-                  {/* </div> */}
-                  <Footer />
-
-                  {activeModal === "loginModal" && (
-                    <LoginModal
-                      isOpen={activeModal === "create"}
-                      onClose={handleCloseModal}
+                  <MobileContext.Provider
+                    value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
+                  >
+                    <Header
+                      handleLoginModal={handleLoginModal}
                       handleRegisterModal={handleRegisterModal}
-                      isLoading={isLoading}
-                      handleAltClick={handleAltClick}
+                      handleSuccessModal={handleSuccessModal}
+                      onLogin={handleLoginModal}
+                      onLogout={handleLogout}
                     />
-                  )}
-                  {activeModal === "registerModal" && (
-                    <RegisterModal
-                      isOpen={activeModal === "create"}
-                      onClose={handleCloseModal}
-                      // handleLoginModal={handleLoginModal}
-                      // handleSuccessModal={handleSuccessModal}
-                      onSubmit={handleLoginModal}
-                      isLoading={isLoading}
-                      handleAltClick={handleAltClick}
-                      handleRegistration={handleRegistration}
-                    />
-                  )}
-                  {activeModal === "successModal" && (
-                    <SuccessModal
-                      isOpen={activeModal === "create"}
-                      onClose={handleCloseModal}
-                      onSubmit={handleLoginModal}
-                    />
-                  )}
+
+                    <Switch>
+                      <Route exact path="/">
+                        <Main
+                          onSignUp={handleRegisterModal}
+                          handleSaveArticle={handleSaveArticle}
+                          handleRemoveArticle={handleRemoveArticle}
+                          searchError={searchError}
+                          handleSearch={handleSearch}
+                        />
+                      </Route>
+
+                      <ProtectedRoute path="/saved-news">
+                        <SavedNews />
+                      </ProtectedRoute>
+                    </Switch>
+                    <Footer />
+
+                    {activeModal === "loginModal" && (
+                      <LoginModal
+                        isOpen={activeModal === "create"}
+                        onClose={handleCloseModal}
+                        handleLogin={handleLogin}
+                        handleRegisterModal={handleRegisterModal}
+                        isLoading={isLoading}
+                        handleAltClick={handleAltClick}
+                      />
+                    )}
+                    {activeModal === "registerModal" && (
+                      <RegisterModal
+                        isOpen={activeModal === "create"}
+                        onClose={handleCloseModal}
+                        // handleLoginModal={handleLoginModal}
+                        // handleSuccessModal={handleSuccessModal}
+                        onSubmit={handleLoginModal}
+                        isLoading={isLoading}
+                        handleAltClick={handleAltClick}
+                        handleRegistration={handleRegistration}
+                      />
+                    )}
+                    {activeModal === "successModal" && (
+                      <SuccessModal
+                        isOpen={activeModal === "create"}
+                        onClose={handleCloseModal}
+                        onSubmit={handleLoginModal}
+                      />
+                    )}
+                  </MobileContext.Provider>
                 </KeywordContext.Provider>
               </SavedArticlesContext.Provider>
             </SearchResultContext.Provider>

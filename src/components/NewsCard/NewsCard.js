@@ -46,6 +46,7 @@ const NewsCard = ({
       {currentPage === "/saved-news" && (
         <>
           <div className="card__keyword">{newsData.keyword}</div>
+
           <div
             className={`card__popup-text ${
               isHovered ? "" : "card__popup-text_hidden"
@@ -65,6 +66,7 @@ const NewsCard = ({
           />
         </>
       )}
+
       {isLoggedIn && currentPage === "/" ? (
         <button
           className={`card__button-bookmark ${

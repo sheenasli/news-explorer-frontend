@@ -2,9 +2,11 @@
   margin: 80px auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.searchform__header {
+.searchform__container {
+  width: 608px;
 }
 
 .searchform__text-heading {
@@ -26,8 +28,7 @@
 }
 
 .searchform__searchbar {
-  /* display: flex;
-  justify-content: center; */
+  width: 608px;
 }
 
 .searchform__searchbar-input {
@@ -35,16 +36,14 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
-  width: 608px;
+  width: 580px;
   height: 62px;
   border-radius: 64px;
   border: 1px solid #d1d2d6;
-  padding-left: 24px;
+  padding: 0 0 0 24px;
 }
 
 .searchform__searchbar-input::placeholder {
-  /* position: relative;
-  left: 24px; */
   color: #b6bcbf;
 }
 
@@ -60,8 +59,8 @@
   height: 66px;
   border-radius: 64px;
   position: relative;
-  left: -168px;
-  bottom: -1px;
+  left: calc(70% + 15px);
+  bottom: 66px;
   cursor: pointer;
 }
 
@@ -71,4 +70,74 @@
 
 .searchform__searchbar-button:focus {
   background-color: #2a65cc;
+}
+
+@media screen and (max-width: 768px) {
+  .searchform {
+    margin: 38px auto 48px;
+    align-items: center;
+    height: 248px;
+  }
+
+  .searchform__container {
+    width: 452px;
+  }
+
+  .searchform__text-heading {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .searchform__text-subheading {
+    margin-bottom: 48px;
+  }
+
+  .searchform__searchbar {
+    width: 452px;
+  }
+
+  .searchform__searchbar-input {
+    width: 428px;
+    height: 54px;
+    border-radius: 56px;
+  }
+
+  .searchform__searchbar-button {
+    width: 160px;
+    height: 56px;
+    border-radius: 56px;
+    left: calc(60% + 24px);
+    bottom: 56px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .searchform {
+    margin: 30px auto 32px;
+    height: 480px;
+  }
+
+  .searchform__container {
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .searchform__text-subheading {
+    margin-bottom: 122px;
+  }
+
+  .searchform__searchbar-input {
+    width: 272px;
+    height: 54px;
+    border-radius: 56px;
+    margin-bottom: 16px;
+    padding: 0 0 0 16px;
+  }
+
+  .searchform__searchbar-button {
+    width: 288px;
+    position: static;
+  }
 }

@@ -3,5 +3,5 @@
   background-image: url("../../images/background\ image.png");
   background-position: top;
   background-repeat: no-repeat;
-  /* max-height: 576px; */
+  background-size: inherit;
 }

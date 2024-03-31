@@ -12,15 +12,17 @@ const Footer = () => {
         &#169; {currentYear} Supersite, Powered by News API{" "}
       </p>
 
-      <div className="footer__buttons">
-        <Link to="/">
+      <div className="footer__links">
+        <div className="footer__buttons">
+          <Link to="/">
+            <button className="footer__button" type="text">
+              Home
+            </button>
+          </Link>
           <button className="footer__button" type="text">
-            Home
+            TripleTen
           </button>
-        </Link>
-        <button className="footer__button" type="text">
-          TripleTen
-        </button>
+        </div>
 
         <div className="footer__icons">
           <a
