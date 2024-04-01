@@ -1,5 +1,4 @@
 .saved-news {
-  min-height: 294px;
   padding: 40px 104px 56px;
   background-color: white;
 }
@@ -48,7 +47,6 @@
 
 @media screen and (max-width: 768px) {
   .saved-news {
-    min-height: 204px;
     padding: 24px 40px 32px;
   }
 
@@ -68,7 +66,6 @@
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .saved-news {
-    min-height: 246px;
     padding: 8px 16px 32px;
   }
 

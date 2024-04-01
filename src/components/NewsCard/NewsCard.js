@@ -114,9 +114,11 @@ const NewsCard = ({
         <p className="card__text_content">
           {newsData.text || newsData.description}
         </p>
-        <p className="card__text_source">
-          {newsData.source.name || newsData.source}
-        </p>
+        {newsData.source && (
+          <p className="card__text_source">
+            {newsData.source.name || newsData.source}
+          </p>
+        )}
       </div>
     </div>
   );
