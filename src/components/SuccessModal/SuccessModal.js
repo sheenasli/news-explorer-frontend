@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useRef } from "react";
 import "./SuccessModal.css";
 import "../ModalWithForm/ModalWithForm.css";
@@ -9,7 +8,7 @@ const SuccessModal = ({
   handleLoginModal,
   handleOverlay,
 }) => {
-  const ref = useRef();
+  // const ref = useRef();
   return (
     <div className="modal" onClick={handleOverlay}>
       <div className="modal__container">

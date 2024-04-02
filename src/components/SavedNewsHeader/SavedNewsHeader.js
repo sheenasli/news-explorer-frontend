@@ -3,9 +3,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 
-const articleAmount = "5";
-//savedarticle array amount
-//keyword array
+// const articleAmount = "5";
 
 const SavedNewsHeader = () => {
   const { currentUser } = useContext(CurrentUserContext);
