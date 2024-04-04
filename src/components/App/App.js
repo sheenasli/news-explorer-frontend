@@ -120,28 +120,28 @@ function App() {
   //Callback function to login user
   const handleLogin = (email, password) => {
     setIsLoading(true);
-    authorization(email, password)
-      .then((res) => {
-        if (res) {
-          localStorage.setItem("jwt", res.token);
-          checkToken(res.token).then((data) => {
-            setCurrentUser(data);
-            setIsLoggedIn(true);
-          });
-        }
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error("Login failed", err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // authorization(email, password)
+    //   .then((res) => {
+    //     if (res) {
+    //       localStorage.setItem("jwt", res.token);
+    //       checkToken(res.token).then((data) => {
+    //         setCurrentUser(data);
+    //         setIsLoggedIn(true);
+    //       });
+    //     }
+    //     handleCloseModal();
+    //   })
+    //   .catch((err) => {
+    //     console.error("Login failed", err);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
 
-    // const data = { name: "fake user" };
-    // setCurrentUser(data);
-    // setIsLoggedIn(true);
-    // setIsLoading(false);
+    const data = { name: "fake user" };
+    setCurrentUser(data);
+    setIsLoggedIn(true);
+    setIsLoading(false);
   };
 
   //Callback function to register new user
