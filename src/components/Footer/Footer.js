@@ -19,16 +19,21 @@ const Footer = () => {
               Home
             </button>
           </Link>
-          <button className="footer__button" type="text">
+          <a
+            className="footer__button"
+            href="https://www.tripleten.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             TripleTen
-          </button>
+          </a>
         </div>
 
         <div className="footer__icons">
           <a
             href="https://www.github.com/sheenasli"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <img
               src={GithubIcon}
@@ -39,7 +44,7 @@ const Footer = () => {
           <a
             href="https://www.linkedin.com/in/sheena-irvin"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <img
               src={LinkedinIcon}

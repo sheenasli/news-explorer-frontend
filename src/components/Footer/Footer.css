@@ -34,6 +34,7 @@
   line-height: 24px;
   font-weight: 400;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .footer__icons {

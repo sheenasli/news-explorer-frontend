@@ -270,7 +270,10 @@ function App() {
   };
 
   return (
-    <div className="page">
+    <div
+      className={`page ${location.pathname === "/saved-news" ? "no-bg" : ""}`}
+    >
+      {" "}
       <CurrentPageContext.Provider
         value={{ currentPage, setCurrentPage, activeModal }}
       >

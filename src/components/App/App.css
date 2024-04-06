@@ -1,7 +1,12 @@
 .page {
   min-height: 1280px;
+  max-width: 1440px;
   background-image: url("../../images/background\ image.png");
   background-position: top;
   background-repeat: no-repeat;
   background-size: inherit;
+}
+
+.no-bg {
+  background-image: none;
 }

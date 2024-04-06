@@ -35,10 +35,10 @@ const SearchForm = ({ handleSearch }) => {
           {errors?.keyword && (
             <p className="searchform__invalid">{errors.keyword.message}</p>
           )}
-          <button className="searchform__searchbar-button" type="submit">
-            Search
-          </button>
         </div>
+        <button className="searchform__searchbar-button" type="submit">
+          Search
+        </button>
       </section>
     </form>
   );
