@@ -42,7 +42,7 @@ const NewsCard = ({
   };
 
   return (
-    <div className="card_container">
+    <div className="card__container">
       {currentPage === "/saved-news" && (
         <>
           <div className="card__keyword">{newsData.keyword}</div>
@@ -106,16 +106,14 @@ const NewsCard = ({
       <img
         src={newsData.image || newsData.urlToImage}
         alt={newsData.link || newsData.url}
-        className="card_image"
+        className="card__image"
       />
       <div className="card__text">
-        <p className="card__text_date-published">{formattedDate} </p>
-        <h3 className="card__text_title">{newsData.title} </h3>
-        <p className="card__text_content">
-          {newsData.text || newsData.description}
-        </p>
+        <p className="card__date-published">{formattedDate} </p>
+        <h3 className="card__title">{newsData.title} </h3>
+        <p className="card__content">{newsData.text || newsData.description}</p>
         {newsData.source && (
-          <p className="card__text_source">
+          <p className="card__source">
             {newsData.source.name || newsData.source}
           </p>
         )}

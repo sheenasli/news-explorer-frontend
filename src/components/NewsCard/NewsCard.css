@@ -1,4 +1,4 @@
-.card_container {
+.card__container {
   background-color: white;
   border-radius: 25px;
   overflow: hidden;
@@ -79,7 +79,7 @@
   background: transparent url(../../images/bookmark-clicked.svg);
 }
 
-.card_image {
+.card__image {
   width: 400px;
   height: 272px;
 }
@@ -89,7 +89,7 @@
   margin: 0 24px;
 }
 
-.card__text_date-published {
+.card__date-published {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -98,7 +98,7 @@
   margin-top: 17px;
 }
 
-.card__text_title {
+.card__title {
   font-family: "Roboto-Slab", Arial, sans-serif;
   font-size: 26px;
   line-height: 30px;
@@ -112,7 +112,7 @@
   -webkit-box-orient: vertical;
 }
 
-.card__text_content {
+.card__content {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   line-height: 22px;
@@ -126,18 +126,16 @@
   -webkit-box-orient: vertical;
 }
 
-.card__text_source {
+.card__source {
   font-family: "Roboto-Slab", Arial, sans-serif;
   font-size: 16px;
   line-height: 20px;
   font-weight: 700;
   color: #b6bcbf;
-  /* position: absolute; */
-  /* bottom: 0px; */
 }
 
 @media screen and (max-width: 768px) {
-  .card_container {
+  .card__container {
     border-radius: 14px;
     width: 224px;
     min-height: 420px;
@@ -148,7 +146,7 @@
     right: 8px;
   }
 
-  .card_image {
+  .card__image {
     width: 224px;
     height: 150px;
   }
@@ -158,11 +156,11 @@
     margin: 16px;
   }
 
-  .card__text_date-published {
+  .card__date-published {
     margin: 0 0 10px;
   }
 
-  .card__text_title {
+  .card__title {
     font-size: 22px;
     line-height: 24px;
     margin: 0;
@@ -170,14 +168,14 @@
     -webkit-line-clamp: 3;
   }
 
-  .card__text_content {
+  .card__content {
     margin: 10px 0 12px;
     height: 5.5em;
     overflow: hidden;
     -webkit-line-clamp: 4;
   }
 
-  .card__text_source {
+  .card__source {
     bottom: -4px;
     overflow: hidden;
     display: -webkit-box;
@@ -187,7 +185,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
-  .card_container {
+  .card__container {
     width: 100%;
   }
 
@@ -196,25 +194,24 @@
     right: 16px;
   }
 
-  .card_image {
+  .card__image {
     width: 100%;
     height: 196px;
   }
 
-  .card__text_title {
-    /* margin: 10px 0 0; */
+  .card__title {
     height: 48px;
     -webkit-line-clamp: 2;
   }
 
-  .card__text_content {
+  .card__content {
     margin: 14px 0 8px;
     height: 5.5em;
     overflow: hidden;
     -webkit-line-clamp: 4;
   }
 
-  .card__text_source {
+  .card__source {
     bottom: -4px;
     overflow: hidden;
     display: -webkit-box;
@@ -226,11 +223,11 @@
     margin: 0 16px 16px;
   }
 
-  .card__text_date-published {
+  .card__date-published {
     margin-top: 16px;
   }
 
-  .card__text_source {
+  .card__source {
     margin: 0;
   }
 }

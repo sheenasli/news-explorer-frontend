@@ -29,16 +29,16 @@ const ModalWithForm = ({
             type="submit"
             disabled={isDisabled}
             className={`modal__button ${
-              isDisabled === true ? "modal__button_disabled" : ""
+              isDisabled === true ? "modal__button-disabled" : ""
             }`}
           >
             {buttonText}
           </button>
 
-          <div className="modal__alt_container">
+          <div className="modal__alt-container">
             <p>or</p>
             <button
-              className="modal__alt_button"
+              className="modal__alt-button"
               type="button"
               onClick={handleAltClick}
             >

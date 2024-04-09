@@ -13,9 +13,6 @@
 .modal__container {
   max-width: 430px;
   width: 100%;
-  /* display: flex;
-  flex-direction: column; */
-  /* position: relative; */
 }
 
 .modal__title {
@@ -40,7 +37,7 @@
   color: rgba(47, 113, 229, 1);
 }
 
-.modal__input_container {
+.modal__input-container {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -96,12 +93,12 @@
   font-weight: 500;
 }
 
-.modal__button_disabled {
+.modal__button-disabled {
   color: #b6bcbf;
   background-color: #e6e8eb;
 }
 
-.modal__alt_container {
+.modal__alt-container {
   display: flex;
   justify-content: center;
   font-size: 14px;
@@ -111,7 +108,7 @@
   align-items: center;
 }
 
-.modal__alt_button {
+.modal__alt-button {
   margin-left: 2px;
   color: #2f71e5;
   border: none;

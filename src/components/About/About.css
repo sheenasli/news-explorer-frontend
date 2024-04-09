@@ -26,14 +26,14 @@
   flex-wrap: wrap;
 }
 
-.about__text_author {
+.about__text-author {
   font-family: "Roboto-slab", Arial, sans-serif;
   font-size: 40px;
   line-height: 46px;
   font-weight: 400;
 }
 
-.about__text_bio {
+.about__text-bio {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -52,6 +52,10 @@
     padding: 0 40px;
   }
 
+  .about__container {
+    margin-bottom: 96px;
+  }
+
   .about__avatar-image {
     width: 232px;
     height: 232px;
@@ -63,12 +67,12 @@
     max-width: 424px;
   }
 
-  .about__text_author {
+  .about__text-author {
     font-size: 30px;
     line-height: 40px;
   }
 
-  .about__text_bio {
+  .about__text-bio {
     font-size: 16px;
     line-height: 22px;
   }
@@ -81,6 +85,7 @@
 
   .about__container {
     flex-direction: column;
+    margin-bottom: 128px;
   }
 
   .about__avatar-image {
@@ -93,11 +98,11 @@
     margin: 0;
   }
 
-  .about__text_author {
+  .about__text-author {
     margin: 24px 0 16px;
   }
 
-  .about__text_bio {
+  .about__text-bio {
     margin: 0;
   }
 }

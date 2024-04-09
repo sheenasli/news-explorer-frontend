@@ -31,7 +31,7 @@ const LoginModal = ({
       handleAltClick={handleAltClick}
       isDisabled={!isValid}
     >
-      <div className="modal__input_container">
+      <div className="modal__input-container">
         <label>
           Email
           <input

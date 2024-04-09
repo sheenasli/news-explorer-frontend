@@ -15,13 +15,13 @@ const SearchForm = ({ handleSearch }) => {
   return (
     <form className="searchform" onSubmit={handleSubmit(handleSearchSubmit)}>
       <section className="searchform__container">
-        <div className="searchform__text-heading">
+        <h1 className="searchform__text-heading">
           What's going on in the world?
-        </div>
-        <div className="searchform__text-subheading">
+        </h1>
+        <p className="searchform__text-subheading">
           Find the latest news on any topic and save them in your personal
           account.
-        </div>
+        </p>
 
         <div className="searchform__searchbar">
           <input

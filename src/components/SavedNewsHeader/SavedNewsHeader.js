@@ -67,8 +67,8 @@ const SavedNewsHeader = () => {
           {currentUser.name}, you have {userArticles.length} saved article
           {userArticles.length !== 1 ? "s" : ""}
         </h1>
-        <div className="saved-news__keywords_container">
-          <p className="saved-news__keywords_title">By keywords:</p>
+        <div className="saved-news__keywords-container">
+          <p className="saved-news__keywords-title">By keywords:</p>
           <p className="saved-news__keywords">{keywordString}</p>
         </div>
       </div>

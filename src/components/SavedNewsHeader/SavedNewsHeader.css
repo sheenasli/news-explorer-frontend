@@ -26,7 +26,7 @@
   color: rgba(26, 27, 34, 1);
 }
 
-.saved-news__keywords_container {
+.saved-news__keywords-container {
   display: flex;
   align-items: center;
   font-family: "Roboto", Arial, sans-serif;
@@ -36,7 +36,7 @@
   height: 24px;
 }
 
-.saved-news__keywords_title {
+.saved-news__keywords-title {
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@
     margin-bottom: 34px;
   }
 
-  .saved-news__keywords_title {
+  .saved-news__keywords-title {
     margin: 0;
   }
 }

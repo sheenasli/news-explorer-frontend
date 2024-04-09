@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import "./SuccessModal.css";
 import "../ModalWithForm/ModalWithForm.css";
 
@@ -10,18 +9,20 @@ const SuccessModal = ({
 }) => {
   // const ref = useRef();
   return (
-    <div className="modal" onClick={handleOverlay}>
-      <div className="modal__container">
+    <div className="success-modal" onClick={handleOverlay}>
+      <div className="success-modal__container">
         <button
           type="button"
           onClick={onClose}
-          className="modal__close-button"
+          className="success-modal__close-button"
         />
-        <form className="modal__form" onSubmit={handleLoginModal}>
-          <h3 className="modal__title">Registration successfully completed!</h3>
+        <form className="success-modal__form" onSubmit={handleLoginModal}>
+          <h3 className="success-modal__title">
+            Registration successfully completed!
+          </h3>
 
           <button
-            className="modal__alt_button"
+            className="success-modal__alt-button"
             type="button"
             onClick={onSubmit}
           >
