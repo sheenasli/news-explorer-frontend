@@ -45,7 +45,7 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 875px) {
   .newscards__section {
     min-height: 200px;
     padding: 40px;
