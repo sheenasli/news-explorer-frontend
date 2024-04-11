@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { getSearchResults } from "../../utils/newsApi";
-import { registration, authorization, checkToken } from "../../utils/auth";
+import { registration, checkToken } from "../../utils/auth";
 import {
   getSavedArticles,
   addSavedArticle,
@@ -34,7 +34,6 @@ import { MobileContext } from "../../contexts/MobileContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  // const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
