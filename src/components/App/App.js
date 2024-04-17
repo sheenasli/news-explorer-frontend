@@ -12,6 +12,7 @@ import {
   addSavedArticle,
   removeSavedArticle,
 } from "../../utils/Api";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -20,7 +21,6 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
 import SuccessModal from "../SuccessModal/SuccessModal";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
