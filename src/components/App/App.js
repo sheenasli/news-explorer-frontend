@@ -51,7 +51,7 @@ function App() {
   useEffect(() => {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
-  console.log(savedArticles);
+
   //Checking for token
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -306,7 +306,7 @@ function App() {
                       </Route>
 
                       <ProtectedRoute path="/saved-news">
-                        <SavedNews />
+                        <SavedNews handleRemoveArticle={handleRemoveArticle} />
                       </ProtectedRoute>
                     </Switch>
                     <Footer />
