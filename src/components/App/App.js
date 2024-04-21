@@ -51,12 +51,11 @@ function App() {
   useEffect(() => {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
-
   //Checking for token
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      checkToken("jwt", jwt)
+      checkToken(jwt)
         .then((res) => {
           if (res && res.data) {
             setCurrentUser(res.data);
