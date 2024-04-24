@@ -15,14 +15,9 @@ const Footer = () => {
       <div className="footer__links">
         <div className="footer__buttons">
           <Link to="/">
-            <a
-              className="footer__button"
-              href="https://www.newsexplorer.spacegas.com"
-              target="_self"
-              rel="noopener noreferrer"
-            >
+            <button className="footer__button" type="text">
               Home
-            </a>
+            </button>
           </Link>
           <a
             className="footer__button"
