@@ -1,13 +1,18 @@
 import { processServerResponse } from "./utils";
 
-export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.newsexplorer.spacegas.com/"
+    : "http://localhost:3001";
 
 export const getSavedArticles = () => {
   const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/articles`, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
-    authorization: `Bearer ${token}`,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   }).then(processServerResponse);
 };
 
