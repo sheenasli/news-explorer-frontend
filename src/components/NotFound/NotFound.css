@@ -1,0 +1,54 @@
+.not-found {
+  /* height: 374px; */
+  background-color: #f5f6f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 86px 0 80px;
+}
+
+.not-found__image {
+  height: 82.5px;
+  width: 82.5px;
+}
+
+.not-found__header {
+  font-family: "Roboto-Slab", Arial, sans-serif;
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  color: black;
+  margin: 31.5px 0 16px;
+}
+
+.not-found__content {
+  font-family: "Roboto-Slab", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #b6bcbf;
+  margin: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found {
+    padding: 48px 0;
+  }
+
+  .not-found__header {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 31.5px 0 16px;
+  }
+
+  .not-found__content {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .not-found {
+    padding: 48px 16px;
+  }
+}
