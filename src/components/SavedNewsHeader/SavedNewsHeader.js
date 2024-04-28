@@ -17,12 +17,51 @@ const SavedNewsHeader = () => {
 
   //keyword array
   const keywordArray = userArticles.map((article) => article.keyword);
+  // const getKeywordString = (keywords) => {
+  //   if (keywordArray.length === 0) {
+  //     return "";
+  //   }
+  //   if (keywordArray.length === 1) {
+  //     return `${keywordArray}`;
+  //   }
+  //   if (keywordArray.length > 1) {
+  //     const count = {};
+  //     for (let keyword of keywords) {
+  //       if (count[keyword]) {
+  //         count[keyword]++;
+  //       } else {
+  //         count[keyword] = 1;
+  //       }
+  //     }
+
+  //     //sort the array, style
+  //     const sortedKeywordArray = [];
+  //     for (const item in count) {
+  //       sortedKeywordArray.push([item, count[item]]);
+  //     }
+  //     sortedKeywordArray.sort((a, b) => {
+  //       return b[1] - a[1];
+  //     });
+
+  //     if (sortedKeywordArray.length === 1) {
+  //       return `${sortedKeywordArray[0][0]}`;
+  //     } else if (sortedKeywordArray.length === 2) {
+  //       return `${sortedKeywordArray[0][0]} and ${sortedKeywordArray[1][0]}`;
+  //     } else {
+  //       return `${sortedKeywordArray[0][0]}, ${sortedKeywordArray[1][0]}, and ${
+  //         sortedKeywordArray.length - 2
+  //       } more`;
+  //     }
+  //   } else {
+  //     return null;
+  //   }
+  // };
   const getKeywordString = (keywords) => {
     if (keywordArray.length === 0) {
       return "";
     }
     if (keywordArray.length === 1) {
-      return `${keywordArray}`;
+      return `${keywordArray[0]}`;
     }
     if (keywordArray.length > 1) {
       const count = {};
@@ -44,13 +83,21 @@ const SavedNewsHeader = () => {
       });
 
       if (sortedKeywordArray.length === 1) {
-        return `${sortedKeywordArray[0][0]}`;
+        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
+          1
+        )}`;
       } else if (sortedKeywordArray.length === 2) {
-        return `${sortedKeywordArray[0][0]} and ${sortedKeywordArray[1][0]}`;
+        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
+          1
+        )} and ${sortedKeywordArray[1][0].toUpperCase()}${sortedKeywordArray[1][0].slice(
+          1
+        )}`;
       } else {
-        return `${sortedKeywordArray[0][0]}, ${sortedKeywordArray[1][0]}, and ${
-          sortedKeywordArray.length - 2
-        } more`;
+        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
+          1
+        )}, ${sortedKeywordArray[1][0].toUpperCase()}${sortedKeywordArray[1][0].slice(
+          1
+        )}, and ${sortedKeywordArray.length - 2} more`;
       }
     } else {
       return null;
