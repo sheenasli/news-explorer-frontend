@@ -121,6 +121,10 @@
   color: #ff0000;
 }
 
+.modal__error-unavailable {
+  color: #ff0000;
+}
+
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .modal__form {
     padding: 16px;

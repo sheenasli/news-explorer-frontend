@@ -318,6 +318,7 @@ function App() {
                         handleRegisterModal={handleRegisterModal}
                         isLoading={isLoading}
                         handleAltClick={handleAltClick}
+                        serverError={serverError}
                       />
                     )}
                     {activeModal === "registerModal" && (
@@ -330,6 +331,7 @@ function App() {
                         isLoading={isLoading}
                         handleAltClick={handleAltClick}
                         handleRegistration={handleRegistration}
+                        serverError={serverError}
                       />
                     )}
                     {activeModal === "successModal" && (
