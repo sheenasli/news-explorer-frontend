@@ -63,8 +63,8 @@ const LoginModal = ({
             onChange={handleChange}
           />
           <span className="modal__error">{errors.password}</span>
+          <span className="modal__error-login">{serverError}</span>
         </label>
-        <span className="modal__error-unavailable">{serverError}</span>
       </div>
     </ModalWithForm>
   );

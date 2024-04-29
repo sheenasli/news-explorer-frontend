@@ -121,8 +121,20 @@
   color: #ff0000;
 }
 
-.modal__error-unavailable {
+.modal__error-register {
   color: #ff0000;
+  position: absolute;
+  left: 50%;
+  bottom: calc(27% + 6px);
+  transform: translate(-50%);
+}
+
+.modal__error-login {
+  color: #ff0000;
+  position: absolute;
+  left: 50%;
+  bottom: calc(32% + 8px);
+  transform: translate(-50%);
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {

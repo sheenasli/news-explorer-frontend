@@ -85,9 +85,10 @@ function App() {
           handleCloseModal();
         }
       })
-      .catch((error) => {
-        console.log(error);
-        setServerError(error.response.data.message);
+      .catch((err) => {
+        // console.log(error.message);
+
+        setServerError(err || "Error occurred, please try again");
       })
       .finally(() => {
         setIsLoading(false);
@@ -127,10 +128,12 @@ function App() {
             setIsLoggedIn(true);
           });
         }
+        setServerError(null);
         handleCloseModal();
       })
       .catch((err) => {
         console.error("Login failed", err);
+        setServerError(err || "Incorrect email or password");
       })
       .finally(() => {
         setIsLoading(false);
@@ -173,6 +176,7 @@ function App() {
   };
 
   const handleCloseModal = () => {
+    setServerError(null);
     setActiveModal("");
   };
 
@@ -325,8 +329,6 @@ function App() {
                       <RegisterModal
                         isOpen={activeModal === "create"}
                         onClose={handleCloseModal}
-                        // handleLoginModal={handleLoginModal}
-                        // handleSuccessModal={handleSuccessModal}
                         onSubmit={handleLoginModal}
                         isLoading={isLoading}
                         handleAltClick={handleAltClick}
