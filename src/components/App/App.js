@@ -35,7 +35,7 @@ import { MobileContext } from "../../contexts/MobileContext";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [serverError, setServerError] = useState(false);
+  const [serverError, setServerError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
@@ -79,15 +79,15 @@ function App() {
     request()
       .then(() => {
         if (activeModal === "registerModal") {
-          setServerError(false);
+          setServerError(null);
         } else {
-          setServerError(false);
+          setServerError(null);
           handleCloseModal();
         }
       })
       .catch((error) => {
         console.log(error);
-        setServerError(true);
+        setServerError(error.response.data.message);
       })
       .finally(() => {
         setIsLoading(false);

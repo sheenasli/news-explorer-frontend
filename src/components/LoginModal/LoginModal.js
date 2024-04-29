@@ -64,11 +64,7 @@ const LoginModal = ({
           />
           <span className="modal__error">{errors.password}</span>
         </label>
-        {serverError && (
-          <span className="modal__error-unavailable">
-            Incorrect email or password
-          </span>
-        )}
+        <span className="modal__error-unavailable">{serverError}</span>
       </div>
     </ModalWithForm>
   );

@@ -76,9 +76,7 @@ const RegisterModal = ({
           />
           <span className="modal__error">{errors.name}</span>
         </label>
-        {serverError && (
-          <span className="modal__error-unavailable">Email is unavailable</span>
-        )}
+        <span className="modal__error-unavailable">{serverError}</span>
       </div>
     </ModalWithForm>
   );
