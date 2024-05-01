@@ -3,13 +3,10 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 
-// const articleAmount = "5";
-
 const SavedNewsHeader = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { savedArticles } = useContext(SavedArticlesContext);
 
-  //article owner
   //savedarticle array amount
   const userArticles = savedArticles.filter(
     (article) => article.owner === currentUser._id
@@ -17,51 +14,16 @@ const SavedNewsHeader = () => {
 
   //keyword array
   const keywordArray = userArticles.map((article) => article.keyword);
-  // const getKeywordString = (keywords) => {
-  //   if (keywordArray.length === 0) {
-  //     return "";
-  //   }
-  //   if (keywordArray.length === 1) {
-  //     return `${keywordArray}`;
-  //   }
-  //   if (keywordArray.length > 1) {
-  //     const count = {};
-  //     for (let keyword of keywords) {
-  //       if (count[keyword]) {
-  //         count[keyword]++;
-  //       } else {
-  //         count[keyword] = 1;
-  //       }
-  //     }
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
-  //     //sort the array, style
-  //     const sortedKeywordArray = [];
-  //     for (const item in count) {
-  //       sortedKeywordArray.push([item, count[item]]);
-  //     }
-  //     sortedKeywordArray.sort((a, b) => {
-  //       return b[1] - a[1];
-  //     });
-
-  //     if (sortedKeywordArray.length === 1) {
-  //       return `${sortedKeywordArray[0][0]}`;
-  //     } else if (sortedKeywordArray.length === 2) {
-  //       return `${sortedKeywordArray[0][0]} and ${sortedKeywordArray[1][0]}`;
-  //     } else {
-  //       return `${sortedKeywordArray[0][0]}, ${sortedKeywordArray[1][0]}, and ${
-  //         sortedKeywordArray.length - 2
-  //       } more`;
-  //     }
-  //   } else {
-  //     return null;
-  //   }
-  // };
   const getKeywordString = (keywords) => {
     if (keywordArray.length === 0) {
       return "";
     }
     if (keywordArray.length === 1) {
-      return `${keywordArray[0]}`;
+      return `${capitalizeFirstLetter(keywordArray[0])}`;
     }
     if (keywordArray.length > 1) {
       const count = {};
@@ -83,21 +45,18 @@ const SavedNewsHeader = () => {
       });
 
       if (sortedKeywordArray.length === 1) {
-        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
-          1
-        )}`;
+        return `${capitalizeFirstLetter(sortedKeywordArray[0][0])}`;
       } else if (sortedKeywordArray.length === 2) {
-        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
-          1
-        )} and ${sortedKeywordArray[1][0].toUpperCase()}${sortedKeywordArray[1][0].slice(
-          1
-        )}`;
+        return `${capitalizeFirstLetter(
+          sortedKeywordArray[0][0]
+        )} and ${capitalizeFirstLetter(sortedKeywordArray[1][0])}`;
       } else {
-        return `${sortedKeywordArray[0][0].toUpperCase()}${sortedKeywordArray[0][0].slice(
-          1
-        )}, ${sortedKeywordArray[1][0].toUpperCase()}${sortedKeywordArray[1][0].slice(
-          1
-        )}, and ${sortedKeywordArray.length - 2} more`;
+        const firstKeywords = sortedKeywordArray
+          .slice(0, 2)
+          .map((keyword) => capitalizeFirstLetter(keyword[0]))
+          .join(", ");
+        const moreCount = sortedKeywordArray.length - 2;
+        return `${firstKeywords}, and ${moreCount} more`;
       }
     } else {
       return null;
