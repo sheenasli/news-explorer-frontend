@@ -54,11 +54,12 @@ function App() {
   //Checking for token
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
-          if (res && res.data) {
-            setCurrentUser(res.data);
+          if (res) {
+            setCurrentUser(res);
             setIsLoggedIn(true);
           }
         })
