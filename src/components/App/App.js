@@ -30,8 +30,6 @@ import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 import { SearchResultContext } from "../../contexts/SearchResultContext";
 import { MobileContext } from "../../contexts/MobileContext";
 
-//Protected Route
-
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -87,8 +85,6 @@ function App() {
         }
       })
       .catch((err) => {
-        // console.log(error.message);
-
         setServerError(err || "Error occurred, please try again");
       })
       .finally(() => {
@@ -139,11 +135,6 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
-
-    // const data = { name: "fake user" };
-    // setCurrentUser(data);
-    // setIsLoggedIn(true);
-    // setIsLoading(false);
   };
 
   //Callback function to register new user
@@ -185,6 +176,7 @@ function App() {
     setKeyword(keyword);
     setIsSearching(true);
     getSearchResults(keyword)
+      // .then(() => new Promise((r) => setTimeout(() => r, 2000))) //Wait 2 seconds
       .then((res) => {
         setSearchResults(res.articles);
         setHasSearched(true);
@@ -291,7 +283,6 @@ function App() {
                     value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
                   >
                     <Header
-                      // handleLoginModal={handleLoginModal}
                       handleRegisterModal={handleRegisterModal}
                       handleSuccessModal={handleSuccessModal}
                       onLogin={handleLoginModal}
@@ -306,6 +297,7 @@ function App() {
                           handleRemoveArticle={handleRemoveArticle}
                           searchError={searchError}
                           handleSearch={handleSearch}
+                          isLoading={isSearching}
                         />
                       </Route>
 
