@@ -1,11 +1,11 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useFormWithValidation } from "../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useForm";
 
 const RegisterModal = ({
   handleRegistration,
   handleAltClick,
-  serverError,
   isLoading,
+  serverError,
   onClose,
 }) => {
   const { values, errors, isValid, handleChange } = useFormWithValidation({
@@ -75,10 +75,8 @@ const RegisterModal = ({
             onChange={handleChange}
           />
           <span className="modal__error">{errors.name}</span>
+          <span className="modal__error-register">{serverError}</span>
         </label>
-        {serverError && (
-          <span className="modal__error-unavailable">Email is unavailable</span>
-        )}
       </div>
     </ModalWithForm>
   );

@@ -7,7 +7,6 @@ const SuccessModal = ({
   handleLoginModal,
   handleOverlay,
 }) => {
-  // const ref = useRef();
   return (
     <div className="success-modal" onClick={handleOverlay}>
       <div className="success-modal__container">

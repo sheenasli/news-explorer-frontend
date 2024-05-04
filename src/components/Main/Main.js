@@ -23,17 +23,18 @@ const Main = ({
     <main className="main">
       <SearchForm handleSearch={handleSearch} />
       <div>
-        {hasSearched && searchResults.length > 0 ? (
+        {isLoading && <Preloader />}
+        {!isLoading && hasSearched && searchResults.length > 0 ? (
           <NewsCardList
             onSignUp={onSignUp}
             handleSaveArticle={handleSaveArticle}
             handleRemoveArticle={handleRemoveArticle}
           />
-        ) : hasSearched && searchResults.length === 0 ? (
+        ) : !isLoading && hasSearched && searchResults.length === 0 ? (
           <NotFound />
-        ) : isLoading ? (
-          <Preloader />
-        ) : searchError === true ? (
+        ) : // ) : isLoading ? (
+        //   <Preloader />
+        searchError === true ? (
           <p>
             Sorry, something went wrong during the request. There may be a
             connection issue or the server may be down. Please try again later.

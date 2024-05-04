@@ -30,12 +30,10 @@ import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 import { SearchResultContext } from "../../contexts/SearchResultContext";
 import { MobileContext } from "../../contexts/MobileContext";
 
-//Protected Route
-
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [serverError, setServerError] = useState(false);
+  const [serverError, setServerError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
@@ -54,11 +52,12 @@ function App() {
   //Checking for token
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
-          if (res && res.data) {
-            setCurrentUser(res.data);
+          if (res) {
+            setCurrentUser(res);
             setIsLoggedIn(true);
           }
         })
@@ -79,15 +78,14 @@ function App() {
     request()
       .then(() => {
         if (activeModal === "registerModal") {
-          setServerError(false);
+          setServerError(null);
         } else {
-          setServerError(false);
+          setServerError(null);
           handleCloseModal();
         }
       })
-      .catch((error) => {
-        console.log(error);
-        setServerError(true);
+      .catch((err) => {
+        setServerError(err || "Error occurred, please try again");
       })
       .finally(() => {
         setIsLoading(false);
@@ -127,19 +125,16 @@ function App() {
             setIsLoggedIn(true);
           });
         }
+        setServerError(null);
         handleCloseModal();
       })
       .catch((err) => {
         console.error("Login failed", err);
+        setServerError(err || "Incorrect email or password");
       })
       .finally(() => {
         setIsLoading(false);
       });
-
-    // const data = { name: "fake user" };
-    // setCurrentUser(data);
-    // setIsLoggedIn(true);
-    // setIsLoading(false);
   };
 
   //Callback function to register new user
@@ -173,6 +168,7 @@ function App() {
   };
 
   const handleCloseModal = () => {
+    setServerError(null);
     setActiveModal("");
   };
 
@@ -180,6 +176,7 @@ function App() {
     setKeyword(keyword);
     setIsSearching(true);
     getSearchResults(keyword)
+      // .then(() => new Promise((r) => setTimeout(() => r, 2000))) //Wait 2 seconds
       .then((res) => {
         setSearchResults(res.articles);
         setHasSearched(true);
@@ -286,7 +283,6 @@ function App() {
                     value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
                   >
                     <Header
-                      // handleLoginModal={handleLoginModal}
                       handleRegisterModal={handleRegisterModal}
                       handleSuccessModal={handleSuccessModal}
                       onLogin={handleLoginModal}
@@ -301,6 +297,7 @@ function App() {
                           handleRemoveArticle={handleRemoveArticle}
                           searchError={searchError}
                           handleSearch={handleSearch}
+                          isLoading={isSearching}
                         />
                       </Route>
 
@@ -318,18 +315,18 @@ function App() {
                         handleRegisterModal={handleRegisterModal}
                         isLoading={isLoading}
                         handleAltClick={handleAltClick}
+                        serverError={serverError}
                       />
                     )}
                     {activeModal === "registerModal" && (
                       <RegisterModal
                         isOpen={activeModal === "create"}
                         onClose={handleCloseModal}
-                        // handleLoginModal={handleLoginModal}
-                        // handleSuccessModal={handleSuccessModal}
                         onSubmit={handleLoginModal}
                         isLoading={isLoading}
                         handleAltClick={handleAltClick}
                         handleRegistration={handleRegistration}
+                        serverError={serverError}
                       />
                     )}
                     {activeModal === "successModal" && (

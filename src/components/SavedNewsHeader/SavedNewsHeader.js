@@ -3,13 +3,10 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { SavedArticlesContext } from "../../contexts/SavedArticlesContext";
 
-// const articleAmount = "5";
-
 const SavedNewsHeader = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { savedArticles } = useContext(SavedArticlesContext);
 
-  //article owner
   //savedarticle array amount
   const userArticles = savedArticles.filter(
     (article) => article.owner === currentUser._id
@@ -17,12 +14,16 @@ const SavedNewsHeader = () => {
 
   //keyword array
   const keywordArray = userArticles.map((article) => article.keyword);
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   const getKeywordString = (keywords) => {
     if (keywordArray.length === 0) {
       return "";
     }
     if (keywordArray.length === 1) {
-      return `${keywordArray}`;
+      return `${capitalizeFirstLetter(keywordArray[0])}`;
     }
     if (keywordArray.length > 1) {
       const count = {};
@@ -44,13 +45,18 @@ const SavedNewsHeader = () => {
       });
 
       if (sortedKeywordArray.length === 1) {
-        return `${sortedKeywordArray[0][0]}`;
+        return `${capitalizeFirstLetter(sortedKeywordArray[0][0])}`;
       } else if (sortedKeywordArray.length === 2) {
-        return `${sortedKeywordArray[0][0]} and ${sortedKeywordArray[1][0]}`;
+        return `${capitalizeFirstLetter(
+          sortedKeywordArray[0][0]
+        )} and ${capitalizeFirstLetter(sortedKeywordArray[1][0])}`;
       } else {
-        return `${sortedKeywordArray[0][0]}, ${sortedKeywordArray[1][0]}, and ${
-          sortedKeywordArray.length - 2
-        } more`;
+        const firstKeywords = sortedKeywordArray
+          .slice(0, 2)
+          .map((keyword) => capitalizeFirstLetter(keyword[0]))
+          .join(", ");
+        const moreCount = sortedKeywordArray.length - 2;
+        return `${firstKeywords}, and ${moreCount} more`;
       }
     } else {
       return null;

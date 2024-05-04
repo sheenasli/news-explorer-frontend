@@ -11,5 +11,3 @@ const Preloader = () => {
 };
 
 export default Preloader;
-
-//parameter { isLoading, error }
