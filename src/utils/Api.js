@@ -2,7 +2,7 @@ import { processServerResponse } from "./utils";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.newsexplorer.spacegas.com"
+    ? "https://api.newsexplorer.crabdance.com"
     : "http://localhost:3001";
 
 export const getSavedArticles = () => {
