@@ -40,3 +40,6 @@ The Figma design was supplied by TripleTen and used to map out the UI design for
 - The project can be seen live using this [https://www.newsexplorer.crabdance.com/]
 - The project's backend code can be found by using this [https://github.com/sheenasli/news-explorer-backend/tree/main]
 - The API (NewsAPI) used in this application can be found by clicking on this [https://newsapi.org]
+
+## Demo
+https://www.loom.com/share/f34ba4be2a924648b23e687d495e419b?sid=41bab8a7-bd01-478c-8ddc-a48e501bbc38
